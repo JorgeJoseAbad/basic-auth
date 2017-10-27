@@ -8,14 +8,17 @@ siteController.get("/", (req, res, next) => {
   res.render("home");
   });
 
-//if current user coincides, go to wait in sitecontroller.get
+//Middleware, if current user coincides, go to wait in sitecontroller.get
   siteController.use((req, res, next) => {
-    if (req.session.currentUser) { next(); }
+    if (req.session.currentUser) {
+      next(); //if true, let free pass to next routes, if not, redirect login
+    }
     else { res.redirect("/login"); }
   });
 
   siteController.get("/secret", (req, res, next) => {
-    res.render("secret");
+    //add a parameter pass to secret.ejs,
+    res.render("secret",{user:req.session.currentUser});
   });
 
 

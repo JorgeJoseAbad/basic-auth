@@ -11,15 +11,12 @@ const mongoose    = require('mongoose');
 const app         = express();
 
 
-//lines removed by jorge
-//var index = require('./routes/index');
-//var users = require('./routes/users');
+
 const authController = require('./routes/authController');
 const siteController = require('./routes/siteController');
 // Mongoose configuration
 mongoose.connect("mongodb://localhost/basic-authoriza");
-//nota, cambio el nombre de la BBDD para evitar conflictos con la "basic-auth"
-//creada durante la leccion de kiko y usada luego en el PP del día
+//BBDD name changed
 
 mongoose.Promise = global.Promise; //esto lo mismo no viene aqui
 // view engine setup
@@ -36,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
     secret: "basic-auth-secret",
+    saveUninitialized: true, //Added
+    resave: true, //added
     cookie: { maxAge: 60000 },
     store: new MongoStore({
     mongooseConnection: mongoose.connection,
@@ -43,7 +42,7 @@ app.use(session({
   })
 }));
 
-//removed by jorge
+
 //app.use('/', index);
 //app.use('/users', users);
 app.use('/', authController);
