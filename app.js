@@ -1,22 +1,30 @@
 /* jshint esversion:6 */
+
+const mongoose = require('mongoose');
+// Mongoose configuration
+mongoose.connect("mongodb://localhost/basic-authoriza",{
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
+//BBDD name changed
 const session     = require("express-session");
-const MongoStore  = require("connect-mongo")(session);
+const createMongoStorage = require("connect-mongo");
+const MongoStore = createMongoStorage(session);
+//const MongoStore  = require("connect-mongo")(session);
+
 const express     = require('express');
 const path        = require('path');
 const logger      = require('morgan');
 const favicon     = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser  = require('body-parser');
-const mongoose    = require('mongoose');
-const app         = express();
 
+const app         = express();
 
 
 const authController = require('./routes/authController');
 const siteController = require('./routes/siteController');
-// Mongoose configuration
-mongoose.connect("mongodb://localhost/basic-authoriza");
-//BBDD name changed
+
 
 mongoose.Promise = global.Promise; //esto lo mismo no viene aqui
 // view engine setup
