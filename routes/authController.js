@@ -44,7 +44,6 @@ authController.post("/signup", (req, res, next) => {
       username,
       password: hashPass
     });
-    debugger;
     newUser.save((err) => {
       if (err) {
         res.render("auth/signup", {
@@ -76,7 +75,6 @@ authController.post("/login", (req, res, next) => {
   User.findOne({ "username": username },
     "_id username password following",
     (err, user) => {
-      debugger;
       if (err || !user) {
         res.render("auth/login", {
           errorMessage: "The username doesn't exist"
