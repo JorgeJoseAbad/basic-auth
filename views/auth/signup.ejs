@@ -4,27 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script language="javascript" src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
   <link rel="stylesheet" href="stylesheets/style.css">
   <title>Sign Up</title>
 </head>
 
 <body>
-  <% if (typeof(errorMessage) != "undefined") { %>
-  <div class="error-message"><%= errorMessage %></div>
-  <% } %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% if (typeof(errorMessage) != "undefined") { %>
+        <div class="error-message"><%= errorMessage %></div>
+        <% } %>
 
-  <form id="form" action="/signup" method="POST">
-    <label for="username">Username</label><br>
-    <input type="text" name="username"
-      placeholder="AnakinSkywalker">
+        <form id="form" action="/signup" method="POST">
+          <label for="username">Username</label><br>
+          <input type="text" name="username"
+            placeholder="AnakinSkywalker">
 
-    <br><br>
-    <label for="password">Password</label><br>
-    <input type="password" name="password"
-      placeholder="DeathStar">
-    <br><br>
+          <br><br>
+          <label for="password">Password</label><br>
+          <input type="password" name="password"
+            placeholder="DeathStar">
+          <br><br>
 
-    <button>Create account</button>
-  </form>
+          <button>Create account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

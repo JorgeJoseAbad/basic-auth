@@ -39,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist')); //nuevo por bootstrap
+
 app.use(session({
     secret: "basic-auth-secret",
     saveUninitialized: true, //Added
