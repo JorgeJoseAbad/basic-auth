@@ -9,7 +9,7 @@ a {
 
 #form {
   margin: 30px auto;
-  width: 380px;
+  min-width: 200px;
 }
 
 #form label {
@@ -59,4 +59,8 @@ a {
   margin: 20px auto;
   padding: 20px;
   width: 100%;
+}
+
+.account-message{
+  margin-top: 10px;
 }

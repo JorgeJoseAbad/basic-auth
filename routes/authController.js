@@ -98,7 +98,7 @@ authController.post("/login", (req, res, next) => {
 authController.get("/logout", (req, res) => {
     req.session.destroy(function(err) {
         // cannot access session here
-        res.redirect("/login");
+        res.redirect("/");
     });
 });
 
